@@ -1,0 +1,75 @@
+{
+  "name": "pinechat",
+  "productName": "PineChat",
+  "author": "mandysa",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "",
+  "scripts": {
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist_win": "electron-builder --win",
+    "postinstall": "electron-builder install-app-deps",
+    "package-win": "electron-packager . PineChat --platform=win32 --electron-version=20.2.0 --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --app-version=0.0.0 --build-version=0.0.0 --out=PineChat --overwrite --no-package-manager --ignore='(.git)' --icon=assets/img/logo.jpg",
+    "package-linux": "electron-packager . PineChat --platform=linux --electron-version=20.2.0 -no-sandbox --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --app-version=0.0.0 --build-version=0.0.0 --out=PineChat --overwrite --no-package-manager --ignore='(.git, node_modules)' --icon=assets/img/logo.icns",
+    "package-mac": "electron-packager . PineChat --platform=darwin --electron-version=20.2.0 --arch=x64 --download.mirrorOptions.mirror=https://npm.taobao.org/mirrors/electron/ --asar --app-version=0.0.0 --build-version=0.0.0 --out=PineChat --overwrite --no-package-manager --ignore='(.git, node_modules)' --icon=assets/img/logo.jpg",
+    "publish": "electron-forge publish"
+  },
+  "build": {
+    "electronVersion": "21.1.1",
+    "win": {
+      "icon": "./icon/icons.iconset/icon_256x256.png",
+      "requestedExecutionLevel": "highestAvailable",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "icon": "./icon/icon.icns",
+      "artifactName": "${productName}-${platform}-${arch}-${version}.${ext}",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "appId": "demo",
+    "artifactName": "demo-${version}-${arch}.${ext}",
+    "nsis": {
+      "artifactName": "demo-${version}-${arch}.${ext}"
+    },
+    "extraResources": [
+      {
+        "from": "./static/xxxx/",
+        "to": "app-server",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "./data/",
+        "to": "app-server",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://xxxxx/download/"
+      }
+    ]
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.0.10",
+    "core-js": "^2.4.1",
+    "electron-packager": "^12.1.0",
+    "electron-updater": "^4.0.0",
+    "path-browserify": "^1.0.1"
+  }
+}

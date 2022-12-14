@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Hongkong&amp;allowPublicKeyRetrieval=true</property>
+        <!--  mysql账户名  -->
+        <property name="hibernate.connection.username">root</property>
+
+        <!--  mysql密码  -->
+        <property name="hibernate.connection.password">saMandy99</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <property name="connection.isolation">2</property>
+        <!--  mysql驱动  -->
+        <!--    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+
+        <mapping resource="Hibernate/pojo/Base/Student.hbm.xml"/>
+        <!--    <mapping resource="Hibernate/pojo/Many2One/Group.hbm.xml"/>-->
+        <!--    <mapping resource="Hibernate/pojo/Many2One/User.hbm.xml"/>-->
+        <!--    <mapping resource="Hibernate/pojo/One2One/User.hbm.xml"/>-->
+        <!--    <mapping resource="Hibernate/pojo/One2One/IDCard.hbm.xml"/>-->
+        <!--    <mapping resource="Hibernate/pojo/Many2Many/Employee.hbm.xml"/>-->
+        <!--    <mapping resource="Hibernate/pojo/Many2Many/Role.hbm.xml"/>-->
+        <mapping resource="Hibernate/pojo/Subclass/Person.hbm.xml"/>
+        <mapping resource="Hibernate/pojo/UnionSubClass/Person.hbm.xml"/>
+        <mapping resource="Hibernate/pojo/JoinSubClass/Person.hbm.xml"/>
+
+        <mapping class="Hibernate.pojo.annotation.Book"/>
+        <mapping class="Hibernate.pojo.annotation.Classes"/>
+        <mapping class="Hibernate.pojo.annotation.Student"/>
+        <mapping class="Hibernate.pojo.Query.User"/>
+        <mapping class="Hibernate.pojo.cache.Book"/>
+        <mapping class="Hibernate.pojo.Lock.Employee"/>
+        <mapping class="Hibernate.self.pojo.PigHome"/>
+        <mapping class="Hibernate.self.pojo.Pig"/>
+
+    </session-factory>
+</hibernate-configuration>
